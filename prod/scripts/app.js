@@ -1,12 +1,17 @@
 var SingletonClass = (function () {
     function SingletonClass() {
+        this._created = false;
         this._score = 0;
+        if (SingletonClass._instance) {
+            throw new Error("Error: Instantiation failed: Use SingletonDemo.getInstance() instead of new.");
+        }
+        SingletonClass._instance = this;
     }
     SingletonClass.getInstance = function () {
-        if (this._instance == null) {
-            this._instance = new SingletonClass();
+        if (SingletonClass._instance === null) {
+            SingletonClass._instance = new SingletonClass();
         }
-        return this._instance;
+        return SingletonClass._instance;
     };
 
     SingletonClass.prototype.setScore = function (value) {
@@ -24,6 +29,7 @@ var SingletonClass = (function () {
     SingletonClass.prototype.removePoints = function (value) {
         this._score -= value;
     };
+    SingletonClass._instance = null;
     return SingletonClass;
 })();
 var Main = (function () {

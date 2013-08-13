@@ -1,19 +1,23 @@
 class SingletonClass {
 
-    private static _instance:SingletonClass;
+    private static _instance:SingletonClass = null;
+    private _created:boolean = false;
 
     private _score:number = 0;
 
-    constructor()
-    {
+    constructor() {
+        if(SingletonClass._instance){
+            throw new Error("Error: Instantiation failed: Use SingletonDemo.getInstance() instead of new.");
+        }
+        SingletonClass._instance = this;
     }
 
     public static getInstance():SingletonClass
     {
-        if(this._instance == null) {
-            this._instance = new SingletonClass();
+        if(SingletonClass._instance === null) {
+            SingletonClass._instance = new SingletonClass();
         }
-        return this._instance;
+        return SingletonClass._instance;
     }
 
     public setScore(value:number):void
