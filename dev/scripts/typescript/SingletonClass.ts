@@ -1,7 +1,6 @@
 class SingletonClass {
 
     private static _instance:SingletonClass = null;
-    private _created:boolean = false;
 
     private _score:number = 0;
 

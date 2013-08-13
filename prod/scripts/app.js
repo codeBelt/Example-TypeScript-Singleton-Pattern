@@ -1,6 +1,5 @@
 var SingletonClass = (function () {
     function SingletonClass() {
-        this._created = false;
         this._score = 0;
         if (SingletonClass._instance) {
             throw new Error("Error: Instantiation failed: Use SingletonDemo.getInstance() instead of new.");
