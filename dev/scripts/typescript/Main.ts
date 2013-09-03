@@ -3,7 +3,7 @@
 class Main {
 
     constructor() {
-        var scoreManager = SingletonClass.getInstance();
+        var scoreManager:SingletonClass = SingletonClass.getInstance();
 
         scoreManager.setScore(10);
         console.log('Score: ', scoreManager.getScore());
