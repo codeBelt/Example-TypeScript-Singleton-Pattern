@@ -1,6 +1,6 @@
 class SingletonClass {
 
-    private static _instance:SingletonClass = null;
+    private static _instance:SingletonClass = new SingletonClass();
 
     private _score:number = 0;
 
@@ -13,9 +13,6 @@ class SingletonClass {
 
     public static getInstance():SingletonClass
     {
-        if(SingletonClass._instance === null) {
-            SingletonClass._instance = new SingletonClass();
-        }
         return SingletonClass._instance;
     }
 
